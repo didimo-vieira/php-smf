@@ -67,7 +67,7 @@ class MidiReader {
 	 * @return int The integer value of the readen bytes.
 	 */
 	private static function readNumber($bytes = 1){
-		if ((self::$filePosition + bytes) > count(self::$fileBytesArray)){
+		if ((self::$filePosition + $bytes) > count(self::$fileBytesArray)){
 			throw new MidiReaderException("Error reading number: Can not read $bytes byte(s) from file.");
 		}
 		$result = 0;
@@ -85,7 +85,7 @@ class MidiReader {
 	 * @return string The concatenated string representation of the readen bytes.
 	 */
 	private static function readString($bytes = 1){
-		if ((self::$filePosition + bytes) > count(self::$fileBytesArray)){
+		if ((self::$filePosition + $bytes) > count(self::$fileBytesArray)){
 			throw new MidiReaderException("Error reading string: Can not read $bytes byte(s) from file.");
 		}
 		$result = implode("", array_slice(self::$fileBytesArray, self::$filePosition, $bytes));
@@ -128,7 +128,7 @@ class MidiReader {
 	 * @return int[] An array of integer.
 	 */
 	private static function readArray($bytes = 1){
-		if ((self::$filePosition + bytes) > count(self::$fileBytesArray)){
+		if ((self::$filePosition + $bytes) > count(self::$fileBytesArray)){
 			throw new MidiReaderException("Error reading array: Can not read $bytes byte(s) from file.");
 		}
 		$result = array_slice(self::$fileBytesArray, self::$filePosition, $bytes);

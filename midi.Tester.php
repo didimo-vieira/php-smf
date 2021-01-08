@@ -1,8 +1,9 @@
 <pre>
 <?php
-function __autoload($class_name) {
+function autoLoad($class_name) {
    require_once "midi.$class_name.php";
 }
+spl_autoload_register("autoLoad");
 try {
 	$smf = MidiReader::loadMidiFile("dresden_tone.mid");
 	echo $smf;
